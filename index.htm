@@ -20,7 +20,7 @@
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -52,7 +52,7 @@
 
         .timeline-line {
             position: absolute;
-            top: 100px;
+            top: 80px;
             left: 50px;
             right: 50px;
             height: 4px;
@@ -62,7 +62,7 @@
 
         .timeline-progress {
             position: absolute;
-            top: 100px;
+            top: 80px;
             left: 50px;
             height: 4px;
             background: #3498db;
@@ -79,7 +79,7 @@
         }
 
         .process-stage {
-            width: 16%;
+            width: 25%;
             text-align: center;
             position: relative;
             cursor: pointer;
@@ -87,30 +87,34 @@
         }
 
         .stage-marker {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+            width: 120px;
+            height: 120px;
             background: #34495e;
-            margin: 0 auto 20px;
+            margin: 0 auto 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
             border: 4px solid #7f8c8d;
             transition: all 0.3s ease;
             position: relative;
             z-index: 4;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .stage-marker img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .process-stage.active .stage-marker {
-            background: #f39c12;
             border-color: #e67e22;
-            transform: scale(1.1);
+            transform: scale(1.05);
             box-shadow: 0 0 20px rgba(243, 156, 18, 0.5);
         }
 
         .process-stage.completed .stage-marker {
-            background: #2ecc71;
             border-color: #27ae60;
         }
 
@@ -123,6 +127,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 0 10px;
         }
 
         .process-stage.active .stage-title {
@@ -261,7 +266,7 @@
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, #f39c12, #2ecc71);
-            width: 16.66%;
+            width: 25%;
             transition: width 0.5s ease;
         }
 
@@ -274,7 +279,7 @@
             text-align: center;
             font-size: 0.9rem;
             color: #bdc3c7;
-            width: 16.66%;
+            width: 25%;
             cursor: pointer;
             padding: 5px;
         }
@@ -401,13 +406,27 @@
             background: linear-gradient(90deg, #f39c12, #e67e22);
             border-radius: 3px 3px 8px 8px;
         }
+
+        /* Estilos para imágenes de marcador */
+        .img-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #2c3e50;
+            color: #ecf0f1;
+            font-size: 1rem;
+            text-align: center;
+            padding: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>Línea de Tiempo - Procesamiento de Jugos</h1>
-            <p class="subtitle">Control de pH en los 6 procesos críticos de elaboración</p>
+            <p class="subtitle">Control de pH en los procesos críticos de elaboración</p>
         </header>
 
         <div class="timeline-container">
@@ -415,37 +434,11 @@
             <div class="timeline-progress" id="timeline-progress"></div>
             
             <div class="process-stages">
-                <!-- Recepción y Lavado -->
-                <div class="process-stage active" id="stage1">
-                    <div class="stage-marker">🚚</div>
-                    <div class="stage-title">Recepción y Lavado de Fruta</div>
-                    <div class="stage-content">
-                        <h3>Recepción y Lavado</h3>
-                        <p>Control de calidad inicial y lavado con agua a pH controlado.</p>
-                        <div class="stage-data">
-                            <div class="data-item">
-                                <span class="data-label">pH Fruta:</span>
-                                <span class="data-value">3.7</span>
-                            </div>
-                            <div class="data-item">
-                                <span class="data-label">pH Agua:</span>
-                                <span class="data-value">6.0</span>
-                            </div>
-                            <div class="data-item">
-                                <span class="data-label">Temp:</span>
-                                <span class="data-value">22°C</span>
-                            </div>
-                            <div class="data-item">
-                                <span class="data-label">Estado:</span>
-                                <span class="ph-indicator ph-optimal">Óptimo</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Extracción -->
-                <div class="process-stage" id="stage2">
-                    <div class="stage-marker">🍊</div>
+                <div class="process-stage active" id="stage1">
+                    <div class="stage-marker">
+                        <div class="img-placeholder">Extracción del Jugo</div>
+                    </div>
                     <div class="stage-title">Extracción del Jugo</div>
                     <div class="stage-content">
                         <h3>Extracción del Jugo</h3>
@@ -471,12 +464,14 @@
                     </div>
                 </div>
 
-                <!-- Formulación -->
-                <div class="process-stage" id="stage3">
-                    <div class="stage-marker">⚗️</div>
-                    <div class="stage-title">Formulación y Ajuste de Acidez</div>
+                <!-- Control de Calidad -->
+                <div class="process-stage" id="stage2">
+                    <div class="stage-marker">
+                        <div class="img-placeholder">Control de Calidad</div>
+                    </div>
+                    <div class="stage-title">Control de Calidad y Ajuste</div>
                     <div class="stage-content">
-                        <h3>Formulación y Ajuste</h3>
+                        <h3>Control de Calidad y Ajuste</h3>
                         <p>Punto crítico: ajuste preciso de pH y relación azúcar/acidez.</p>
                         <div class="stage-data">
                             <div class="data-item">
@@ -504,8 +499,10 @@
                 </div>
 
                 <!-- Pasteurización -->
-                <div class="process-stage" id="stage4">
-                    <div class="stage-marker">🔥</div>
+                <div class="process-stage" id="stage3">
+                    <div class="stage-marker">
+                        <div class="img-placeholder">Pasteurización</div>
+                    </div>
                     <div class="stage-title">Pasteurización Flash (85-95°C)</div>
                     <div class="stage-content">
                         <h3>Pasteurización Flash</h3>
@@ -531,41 +528,15 @@
                     </div>
                 </div>
 
-                <!-- Envasado -->
-                <div class="process-stage" id="stage5">
-                    <div class="stage-marker">🧴</div>
-                    <div class="stage-title">Envasado Aséptico</div>
-                    <div class="stage-content">
-                        <h3>Envasado Aséptico</h3>
-                        <p>Envasado en condiciones estériles para larga vida útil.</p>
-                        <div class="stage-data">
-                            <div class="data-item">
-                                <span class="data-label">pH:</span>
-                                <span class="data-value">3.6</span>
-                            </div>
-                            <div class="data-item">
-                                <span class="data-label">Velocidad:</span>
-                                <span class="data-value">120/min</span>
-                            </div>
-                            <div class="data-item">
-                                <span class="data-label">Eficiencia:</span>
-                                <span class="data-value">98%</span>
-                            </div>
-                            <div class="data-item">
-                                <span class="data-label">Estado:</span>
-                                <span class="ph-indicator ph-optimal">Óptimo</span>
-                            </div>
-                        </div>
+                <!-- Producto Final -->
+                <div class="process-stage" id="stage4">
+                    <div class="stage-marker">
+                        <div class="img-placeholder">Producto Final</div>
                     </div>
-                </div>
-
-                <!-- Almacenamiento -->
-                <div class="process-stage" id="stage6">
-                    <div class="stage-marker">❄️</div>
-                    <div class="stage-title">Almacenamiento en Cadena de Frío</div>
+                    <div class="stage-title">Producto Final</div>
                     <div class="stage-content">
-                        <h3>Almacenamiento en Frío</h3>
-                        <p>Conservación a 4°C para mantener calidad y propiedades.</p>
+                        <h3>Producto Final</h3>
+                        <p>Jugo listo para distribución, conservado a 4°C.</p>
                         <div class="stage-data">
                             <div class="data-item">
                                 <span class="data-label">pH Final:</span>
@@ -589,12 +560,6 @@
             </div>
         </div>
 
-        <div class="process-animation">
-            <div class="animation-element fruit" id="animated-fruit" style="top: 20px; left: 10%;"></div>
-            <div class="animation-element juice-flow" id="animated-juice" style="top: 35px; left: 30%; display: none;"></div>
-            <div class="animation-element bottle" id="animated-bottle" style="top: 15px; left: 80%; display: none;"></div>
-        </div>
-
         <div class="control-panel">
             <div class="control-header">
                 <div class="control-title">Control de Proceso</div>
@@ -613,19 +578,17 @@
                     <div class="progress-fill" id="progress-fill"></div>
                 </div>
                 <div class="stage-indicators">
-                    <div class="stage-indicator active" data-stage="1">Recepción</div>
-                    <div class="stage-indicator" data-stage="2">Extracción</div>
-                    <div class="stage-indicator" data-stage="3">Formulación</div>
-                    <div class="stage-indicator" data-stage="4">Pasteurización</div>
-                    <div class="stage-indicator" data-stage="5">Envasado</div>
-                    <div class="stage-indicator" data-stage="6">Almacenamiento</div>
+                    <div class="stage-indicator active" data-stage="1">Extracción</div>
+                    <div class="stage-indicator" data-stage="2">Control Calidad</div>
+                    <div class="stage-indicator" data-stage="3">Pasteurización</div>
+                    <div class="stage-indicator" data-stage="4">Producto Final</div>
                 </div>
             </div>
 
             <div class="data-panel">
                 <div class="data-card">
                     <div class="data-label">pH Actual del Sistema</div>
-                    <div class="data-value" id="current-ph">3.7</div>
+                    <div class="data-value" id="current-ph">3.5</div>
                     <div class="ph-indicator ph-optimal" id="ph-status">Óptimo</div>
                 </div>
                 <div class="data-card">
@@ -651,7 +614,7 @@
                 <div class="data-card">
                     <div class="data-label">Tiempo Total</div>
                     <div class="data-value" id="process-time">30 min</div>
-                    <div class="data-label">Desde recepción</div>
+                    <div class="data-label">Desde extracción</div>
                 </div>
             </div>
 
@@ -663,85 +626,75 @@
             </div>
 
             <div class="alert-panel" id="alert-panel">
-                ⚠️ <strong>Alerta de Proceso:</strong> El pH en la etapa de formulación está fuera del rango óptimo. Verificar dosificación de ácido cítrico.
+                ⚠️ <strong>Alerta de Proceso:</strong> El pH en la etapa de control de calidad está fuera del rango óptimo. Verificar dosificación de ácido cítrico.
             </div>
         </div>
     </div>
 
     <script>
-        // Configuración de los 6 procesos
+        // Configuración de los 4 procesos (reducidos)
         const stages = [
             { 
                 id: 1, 
-                title: 'Recepción y Lavado', 
-                ph: 3.7, 
-                temperature: 22,
-                brix: null,
-                acidity: null,
-                efficiency: 95,
-                time: 0,
-                icon: '🚚'
-            },
-            { 
-                id: 2, 
-                title: 'Extracción', 
+                title: 'Extracción del Jugo', 
                 ph: 3.5, 
                 temperature: 25,
                 brix: 10.2,
                 acidity: 0.7,
                 efficiency: 88,
-                time: 10,
-                icon: '🍊'
+                time: 0
             },
             { 
-                id: 3, 
-                title: 'Formulación', 
+                id: 2, 
+                title: 'Control de Calidad', 
                 ph: 3.6, 
                 temperature: 20,
                 brix: 10.5,
                 acidity: 0.8,
                 efficiency: 90,
-                time: 15,
-                icon: '⚗️'
+                time: 10
             },
             { 
-                id: 4, 
+                id: 3, 
                 title: 'Pasteurización', 
                 ph: 3.6, 
                 temperature: 88,
                 brix: 10.5,
                 acidity: 0.8,
                 efficiency: 94,
-                time: 20,
-                icon: '🔥'
+                time: 20
             },
             { 
-                id: 5, 
-                title: 'Envasado', 
-                ph: 3.6, 
-                temperature: 25,
-                brix: 10.5,
-                acidity: 0.8,
-                efficiency: 96,
-                time: 25,
-                icon: '🧴'
-            },
-            { 
-                id: 6, 
-                title: 'Almacenamiento', 
+                id: 4, 
+                title: 'Producto Final', 
                 ph: 3.6, 
                 temperature: 4,
                 brix: 10.5,
                 acidity: 0.8,
                 efficiency: 98,
-                time: 30,
-                icon: '❄️'
+                time: 30
             }
+        ];
+
+        // Array de imágenes para cada etapa
+        const stageImages = [
+            'extracion.png',
+            'calidad.png', 
+            'pasteriorizacio.png',
+            'botella.png'
+        ];
+
+        // Texto alternativo para cada imagen
+        const stageAltText = [
+            'Extracción de jugo',
+            'Control de calidad',
+            'Proceso de pasteurización',
+            'Producto final en botella'
         ];
 
         let currentStage = 1;
         const totalStages = stages.length;
-        let currentPH = 3.7;
+        let currentPH = 3.5;
 
         // Elementos DOM
         const progressFill = document.getElementById('progress-fill');
@@ -759,10 +712,31 @@
         const addAcidBtn = document.getElementById('add-acid');
         const addBaseBtn = document.getElementById('add-base');
 
-        // Elementos de animación
-        const animatedFruit = document.getElementById('animated-fruit');
-        const animatedJuice = document.getElementById('animated-juice');
-        const animatedBottle = document.getElementById('animated-bottle');
+        // Función para cargar imágenes en los marcadores
+        function loadStageImages() {
+            const stageMarkers = document.querySelectorAll('.stage-marker');
+            
+            stageMarkers.forEach((marker, index) => {
+                // Crear elemento de imagen
+                const img = document.createElement('img');
+                img.src = stageImages[index];
+                img.alt = stageAltText[index];
+                img.style.width = '100%';
+                img.style.height = '100%';
+                img.style.objectFit = 'cover';
+                
+                img.onerror = function() {
+                    // Si la imagen no carga, mostrar el placeholder
+                    this.style.display = 'none';
+                    const placeholder = marker.querySelector('.img-placeholder');
+                    if (placeholder) placeholder.style.display = 'flex';
+                };
+                
+                // Reemplazar el contenido del marcador con la imagen
+                marker.innerHTML = '';
+                marker.appendChild(img);
+            });
+        }
 
         // Navegación entre etapas
         function goToStage(stageNumber) {
@@ -795,9 +769,6 @@
             // Actualizar datos según la etapa
             updateStageData(stageNumber);
             
-            // Actualizar animaciones
-            updateAnimations(stageNumber);
-            
             currentStage = stageNumber;
         }
 
@@ -823,8 +794,8 @@
             // Actualizar estado del pH
             updatePHStatus();
             
-            // Simular alerta aleatoria en etapa de formulación
-            if (stageNumber === 3 && Math.random() > 0.7) {
+            // Simular alerta aleatoria en etapa de control de calidad
+            if (stageNumber === 2 && Math.random() > 0.7) {
                 alertPanel.classList.add('show');
             } else {
                 alertPanel.classList.remove('show');
@@ -845,43 +816,9 @@
             }
         }
 
-        // Actualizar animaciones
-        function updateAnimations(stageNumber) {
-            // Resetear todas las animaciones
-            animatedFruit.style.display = 'block';
-            animatedJuice.style.display = 'none';
-            animatedBottle.style.display = 'none';
-            
-            // Configurar animaciones según la etapa
-            switch(stageNumber) {
-                case 1: // Recepción
-                    animatedFruit.style.left = '10%';
-                    break;
-                case 2: // Extracción
-                    animatedFruit.style.left = '30%';
-                    animatedJuice.style.display = 'block';
-                    animatedJuice.style.left = '30%';
-                    break;
-                case 3: // Formulación
-                    animatedJuice.style.left = '50%';
-                    break;
-                case 4: // Pasteurización
-                    animatedJuice.style.left = '50%';
-                    break;
-                case 5: // Envasado
-                    animatedJuice.style.display = 'none';
-                    animatedBottle.style.display = 'block';
-                    animatedBottle.style.left = '70%';
-                    break;
-                case 6: // Almacenamiento
-                    animatedBottle.style.left = '90%';
-                    break;
-            }
-        }
-
-        // Ajustar pH (solo en etapa de formulación)
+        // Ajustar pH (solo en etapa de control de calidad)
         function adjustPH(change) {
-            if (currentStage === 3) {
+            if (currentStage === 2) {
                 currentPH += change;
                 currentPH = Math.min(Math.max(currentPH, 2.5), 5.5);
                 currentPHDisplay.textContent = currentPH.toFixed(1);
@@ -931,40 +868,10 @@
         addAcidBtn.addEventListener('click', () => adjustPH(-0.1));
         addBaseBtn.addEventListener('click', () => adjustPH(0.1));
 
-        // Animación de elementos
-        function animateElements() {
-            // Animación de fruta moviéndose
-            if (currentStage <= 2) {
-                const currentLeft = parseInt(animatedFruit.style.left) || 10;
-                let newLeft = currentLeft + 0.5;
-                if (newLeft > 30) newLeft = 10;
-                animatedFruit.style.left = `${newLeft}%`;
-            }
-            
-            // Animación de flujo de jugo
-            if (currentStage >= 2 && currentStage <= 4) {
-                const currentLeft = parseInt(animatedJuice.style.left) || 30;
-                let newLeft = currentLeft + 0.8;
-                if (newLeft > 70) newLeft = 30;
-                animatedJuice.style.left = `${newLeft}%`;
-            }
-            
-            // Animación de botellas
-            if (currentStage >= 5) {
-                const currentLeft = parseInt(animatedBottle.style.left) || 70;
-                let newLeft = currentLeft + 0.3;
-                if (newLeft > 90) newLeft = 70;
-                animatedBottle.style.left = `${newLeft}%`;
-            }
-        }
-
-        // Iniciar animaciones
-        setInterval(animateElements, 100);
-
         // Simular cambios en tiempo real
         setInterval(() => {
             // Variación aleatoria pequeña del pH
-            if (currentStage !== 3) {
+            if (currentStage !== 2) {
                 const randomChange = (Math.random() - 0.5) * 0.05;
                 currentPH += randomChange;
                 currentPH = Math.min(Math.max(currentPH, 2.5), 5.5);
@@ -979,7 +886,10 @@
         }, 2000);
 
         // Inicializar
-        goToStage(1);
+        document.addEventListener('DOMContentLoaded', () => {
+            loadStageImages();
+            goToStage(1);
+        });
     </script>
 </body>
 </html>
