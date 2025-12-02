@@ -303,51 +303,16 @@
             text-align: center;
         }
 
-        .data-label {
+        .data-label-panel {
             font-size: 0.9rem;
             color: #bdc3c7;
             margin-bottom: 5px;
         }
 
-        .data-value {
+        .data-value-panel {
             font-size: 1.5rem;
             font-weight: bold;
             color: #f39c12;
-        }
-
-        .chemical-info {
-            background: rgba(243, 156, 18, 0.1);
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 20px;
-        }
-
-        .chemical-formula {
-            font-family: 'Times New Roman', serif;
-            font-style: italic;
-            margin: 10px 0;
-            text-align: center;
-            color: #2ecc71;
-            font-size: 1.1rem;
-        }
-
-        .alert-panel {
-            background: rgba(231, 76, 60, 0.2);
-            border-left: 4px solid #e74c3c;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 20px;
-            display: none;
-        }
-
-        .alert-panel.show {
-            display: block;
-            animation: slideIn 0.5s ease;
-        }
-
-        @keyframes slideIn {
-            from { transform: translateX(-20px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
         }
 
         .control-actions {
@@ -369,42 +334,6 @@
 
         .control-btn:hover {
             background: #2c3e50;
-        }
-
-        .process-animation {
-            position: absolute;
-            top: -100px;
-            left: 0;
-            width: 100%;
-            height: 80px;
-            pointer-events: none;
-        }
-
-        .animation-element {
-            position: absolute;
-            transition: all 2s ease;
-        }
-
-        .fruit {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: radial-gradient(circle, #f39c12, #e67e22);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .juice-flow {
-            width: 80px;
-            height: 8px;
-            background: linear-gradient(90deg, #f39c12, #e74c3c);
-            border-radius: 4px;
-        }
-
-        .bottle {
-            width: 25px;
-            height: 50px;
-            background: linear-gradient(90deg, #f39c12, #e67e22);
-            border-radius: 3px 3px 8px 8px;
         }
 
         /* Estilos para imágenes de marcador */
@@ -547,10 +476,6 @@
                                 <span class="data-value">4°C</span>
                             </div>
                             <div class="data-item">
-                                <span class="data-label">Vida Útil:</span>
-                                <span class="data-value">12 meses</span>
-                            </div>
-                            <div class="data-item">
                                 <span class="data-label">Estado:</span>
                                 <span class="ph-indicator ph-optimal">Aprobado</span>
                             </div>
@@ -587,46 +512,25 @@
 
             <div class="data-panel">
                 <div class="data-card">
-                    <div class="data-label">pH Actual del Sistema</div>
-                    <div class="data-value" id="current-ph">3.5</div>
+                    <div class="data-label-panel">pH Actual del Sistema</div>
+                    <div class="data-value-panel" id="current-ph">3.5</div>
                     <div class="ph-indicator ph-optimal" id="ph-status">Óptimo</div>
                 </div>
                 <div class="data-card">
-                    <div class="data-label">Acidez Titulable</div>
-                    <div class="data-value" id="acidity">0.8%</div>
-                    <div class="data-label">Como ácido cítrico</div>
+                    <div class="data-label-panel">Acidez Titulable</div>
+                    <div class="data-value-panel" id="acidity">0.8%</div>
+                    <div class="data-label-panel">Como ácido cítrico</div>
                 </div>
                 <div class="data-card">
-                    <div class="data-label">Sólidos Solubles</div>
-                    <div class="data-value" id="brix">10.5°Bx</div>
-                    <div class="data-label">Refractómetro</div>
+                    <div class="data-label-panel">Sólidos Solubles</div>
+                    <div class="data-value-panel" id="brix">10.5°Bx</div>
+                    <div class="data-label-panel">Refractómetro</div>
                 </div>
                 <div class="data-card">
-                    <div class="data-label">Temperatura</div>
-                    <div class="data-value" id="temperature">22°C</div>
-                    <div class="data-label">Actual</div>
+                    <div class="data-label-panel">Temperatura</div>
+                    <div class="data-value-panel" id="temperature">22°C</div>
+                    <div class="data-label-panel">Actual</div>
                 </div>
-                <div class="data-card">
-                    <div class="data-label">Eficiencia</div>
-                    <div class="data-value" id="efficiency">94%</div>
-                    <div class="data-label">Proceso</div>
-                </div>
-                <div class="data-card">
-                    <div class="data-label">Tiempo Total</div>
-                    <div class="data-value" id="process-time">30 min</div>
-                    <div class="data-label">Desde extracción</div>
-                </div>
-            </div>
-
-            <div class="chemical-info">
-                <h3>Sistema Buffer Ácido Cítrico/Citrato</h3>
-                <div class="chemical-formula">C₆H₈O₇ ⇌ H⁺ + C₆H₇O₇⁻ (pKa = 3.13)</div>
-                <div class="chemical-formula">C₆H₇O₇⁻ ⇌ H⁺ + C₆H₆O₇²⁻ (pKa = 4.76)</div>
-                <p>Rango óptimo de pH para jugos: 3.3 - 4.2 | Acidez titulable: 0.5 - 1.2%</p>
-            </div>
-
-            <div class="alert-panel" id="alert-panel">
-                ⚠️ <strong>Alerta de Proceso:</strong> El pH en la etapa de control de calidad está fuera del rango óptimo. Verificar dosificación de ácido cítrico.
             </div>
         </div>
     </div>
@@ -701,13 +605,10 @@
         const timelineProgress = document.getElementById('timeline-progress');
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
-        const alertPanel = document.getElementById('alert-panel');
         const currentPHDisplay = document.getElementById('current-ph');
         const acidityDisplay = document.getElementById('acidity');
         const temperatureDisplay = document.getElementById('temperature');
         const brixDisplay = document.getElementById('brix');
-        const efficiencyDisplay = document.getElementById('efficiency');
-        const processTimeDisplay = document.getElementById('process-time');
         const phStatusDisplay = document.getElementById('ph-status');
         const addAcidBtn = document.getElementById('add-acid');
         const addBaseBtn = document.getElementById('add-base');
@@ -780,8 +681,6 @@
             // Actualizar displays principales
             currentPHDisplay.textContent = currentPH.toFixed(1);
             temperatureDisplay.textContent = `${stage.temperature}°C`;
-            efficiencyDisplay.textContent = `${stage.efficiency}%`;
-            processTimeDisplay.textContent = `${stage.time} min`;
             
             // Actualizar acidez y brix si están disponibles
             if (stage.acidity !== null) {
@@ -793,13 +692,6 @@
             
             // Actualizar estado del pH
             updatePHStatus();
-            
-            // Simular alerta aleatoria en etapa de control de calidad
-            if (stageNumber === 2 && Math.random() > 0.7) {
-                alertPanel.classList.add('show');
-            } else {
-                alertPanel.classList.remove('show');
-            }
         }
 
         // Actualizar estado del pH
@@ -823,13 +715,6 @@
                 currentPH = Math.min(Math.max(currentPH, 2.5), 5.5);
                 currentPHDisplay.textContent = currentPH.toFixed(1);
                 updatePHStatus();
-                
-                // Mostrar alerta si está fuera de rango
-                if (currentPH < 3.3 || currentPH > 4.2) {
-                    alertPanel.classList.add('show');
-                } else {
-                    alertPanel.classList.remove('show');
-                }
             }
         }
 
@@ -878,11 +763,6 @@
                 currentPHDisplay.textContent = currentPH.toFixed(1);
                 updatePHStatus();
             }
-            
-            // Variación de eficiencia
-            const currentEfficiency = parseInt(efficiencyDisplay.textContent);
-            const efficiencyChange = (Math.random() - 0.5) * 1;
-            efficiencyDisplay.textContent = `${Math.min(Math.max(currentEfficiency + efficiencyChange, 85), 98)}%`;
         }, 2000);
 
         // Inicializar
